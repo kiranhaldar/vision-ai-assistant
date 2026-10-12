@@ -39,3 +39,6 @@ Thumbs.db
 # Node (future)
 node_modules/
 package-lock.json
+# VS Code Code Runner
+tempCodeRunnerFile.py
+
