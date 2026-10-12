@@ -1,0 +1,65 @@
+* { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+body {
+    background: #050508;
+    overflow: hidden;
+    font-family: 'Courier New', monospace;
+    color: #00ffcc;
+}
+
+#canvas-container {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 1;
+}
+
+#hud-overlay {
+    position: fixed; top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    pointer-events: none; z-index: 2;
+    display: flex; justify-content: center; align-items: center;
+}
+
+.hud-ring {
+    position: absolute; border-radius: 50%;
+    border: 2px solid rgba(0, 255, 204, 0.3);
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.2), inset 0 0 20px rgba(0, 255, 204, 0.1);
+    transition: transform 0.1s ease-out;
+}
+.outer { width: 60vmin; height: 60vmin; border-style: dashed; }
+.inner {
+    width: 45vmin; height: 45vmin;
+    border-color: rgba(255, 0, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.2), inset 0 0 20px rgba(255, 0, 255, 0.1);
+}
+
+.hud-corner {
+    position: absolute; width: 50px; height: 50px;
+    border: 2px solid #00ffcc; opacity: 0.6;
+}
+.top-left     { top: 5%; left: 5%;  border-right: none; border-bottom: none; }
+.top-right    { top: 5%; right: 5%; border-left: none;  border-bottom: none; }
+.bottom-left  { bottom: 5%; left: 5%;  border-right: none; border-top: none; }
+.bottom-right { bottom: 5%; right: 5%; border-left: none;  border-top: none; }
+
+#telemetry {
+    position: absolute; bottom: 10%; left: 10%;
+    display: flex; flex-direction: column; gap: 8px;
+    font-size: 0.9rem; letter-spacing: 2px;
+}
+.stat { display: flex; gap: 15px; }
+.label { color: #00ffcc; opacity: 0.6; }
+#val-gesture, #val-scale, #val-rot {
+    color: #ff00ff; font-weight: bold;
+    text-shadow: 0 0 10px #ff00ff;
+}
+
+#voice-status {
+    position: absolute; top: 10%; right: 10%;
+    display: flex; align-items: center; gap: 12px;
+    font-size: 0.8rem; letter-spacing: 2px;
+}
+.voice-indicator {
+    width: 10px; height: 10px;
+    background: #00ffcc; border-radius: 50%;
+}

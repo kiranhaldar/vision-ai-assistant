@@ -1,0 +1,29 @@
+﻿[project]
+name = "vision-ai-assistant"
+version = "0.1.0"
+description = "Real-time Sci-Fi AI Assistant with hand gesture and voice control"
+requires-python = ">=3.11,<3.13"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+exclude = ["venv", ".venv", "models", "logs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.11"
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-v --cov=backend --cov-report=term-missing"

@@ -1,0 +1,112 @@
+================================================================
+  VISION AI ASSISTANT — How to Run
+================================================================
+
+Prerequisites:
+  - Python 3.13 venv already created at .\venv\
+  - All dependencies installed (pip install -r requirements.txt)
+  - Webcam + Microphone connected
+
+================================================================
+  TERMINAL 1 — BACKEND (Hand tracking + Voice + WebSocket)
+================================================================
+
+cd "C:\Users\Asus\Desktop\Python\AI&ML\vision-ai-assistant"
+.\venv\Scripts\Activate.ps1
+python -m backend.app
+
+What you should see:
+  - INFO | backend.app | WebSocket server on ws://0.0.0.0:8765
+  - A webcam window opens showing hand landmarks
+  - Speaker: "Good afternoon sir. Vision online..."
+
+To stop: press 'q' in the webcam window OR Ctrl+C in terminal
+
+
+================================================================
+  TERMINAL 2 — FRONTEND (Three.js HUD in browser)
+================================================================
+
+cd "C:\Users\Asus\Desktop\Python\AI&ML\vision-ai-assistant\frontend"
+python -m http.server 8000 --bind 127.0.0.1
+
+What you should see:
+  - Serving HTTP on 127.0.0.1 port 8000 (http://127.0.0.1:8000/) ...
+
+To stop: Ctrl+C in terminal
+
+
+================================================================
+  BROWSER
+================================================================
+
+Open Chrome/Edge and type manually:
+
+    http://127.0.0.1:8000
+
+DO NOT click the terminal link (http://[::]:8000/) — it will fail.
+
+What you should see:
+  - 3D particle humanoid
+  - Glowing HUD rings
+  - Telemetry (bottom-left): GESTURE / SCALE / ROTATION
+  - Voice status (top-right): "VISION ONLINE"
+
+
+================================================================
+  GESTURES (Hand control)
+================================================================
+
+  Open palm (5 fingers up)     → Activate HUD (scale up)
+  Pinch (thumb + index touch)  → Scale 3D model
+  Horizontal swipe             → Rotate 3D model
+
+Test in front of the webcam window (Terminal 1).
+
+
+================================================================
+  VOICE COMMANDS
+================================================================
+
+  "Open workplace"   → Opens Google
+  "Open browser"     → Opens Google
+  "Open YouTube"     → Opens YouTube
+  "Open GitHub"      → Opens GitHub
+  "Close" / "Shutdown" → Terminates backend
+
+
+================================================================
+  OPTIONAL — Only camera preview (no WebSocket/voice/frontend)
+================================================================
+
+cd "C:\Users\Asus\Desktop\Python\AI&ML\vision-ai-assistant"
+.\venv\Scripts\Activate.ps1
+python test_camera.py
+
+Press 'q' in the webcam window to quit.
+
+
+================================================================
+  TROUBLESHOOTING
+================================================================
+
+Issue: "ModuleNotFoundError: No module named 'aifc'"
+  → Run: pip install --upgrade SpeechRecognition
+
+Issue: "module 'mediapipe' has no attribute 'solutions'"
+  → Make sure vision_tracker.py uses MediaPipe Tasks API
+    (mp.tasks.python.vision.HandLandmarker), NOT mp.solutions.hands
+
+Issue: "ERR_FAILED (-108)" in browser
+  → Use --bind 127.0.0.1 and type http://127.0.0.1:8000 manually
+
+Issue: Webcam not detected
+  → Close Zoom/Teams/Chrome tabs using camera
+  → Try: python test_camera.py --camera 1
+
+Issue: Voice commands do nothing
+  → Windows Settings → Privacy → Microphone → allow Python
+
+================================================================
+  End of file
+================================================================

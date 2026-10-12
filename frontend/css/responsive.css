@@ -1,0 +1,12 @@
+@media (max-width: 768px) {
+    #telemetry { bottom: 5%; left: 5%; font-size: 0.7rem; }
+    #voice-status { top: 5%; right: 5%; font-size: 0.65rem; }
+    .hud-corner { width: 30px; height: 30px; }
+    .outer { width: 80vmin; height: 80vmin; }
+    .inner { width: 60vmin; height: 60vmin; }
+}
+
+@media (max-width: 480px) {
+    #telemetry { flex-direction: column; gap: 4px; }
+    .stat { gap: 8px; }
+}

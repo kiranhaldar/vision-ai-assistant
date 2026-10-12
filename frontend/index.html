@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VISION | AI Assistant</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <div id="hud-overlay">
+        <div class="hud-ring outer"></div>
+        <div class="hud-ring inner"></div>
+        <div class="hud-corner top-left"></div>
+        <div class="hud-corner top-right"></div>
+        <div class="hud-corner bottom-left"></div>
+        <div class="hud-corner bottom-right"></div>
+
+        <div id="telemetry">
+            <div class="stat"><span class="label">GESTURE</span><span id="val-gesture">IDLE</span></div>
+            <div class="stat"><span class="label">SCALE</span><span id="val-scale">1.00</span></div>
+            <div class="stat"><span class="label">ROTATION</span><span id="val-rot">0.00</span></div>
+        </div>
+
+        <div id="voice-status">
+            <div class="voice-indicator"></div>
+            <span id="voice-text">VISION OFFLINE</span>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/websocket_client.js"></script>
+    <script src="js/hud_controller.js"></script>
+    <script src="js/gestures.js"></script>
+    <script src="js/voice_visualizer.js"></script>
+    <script src="js/three_scene.js"></script>
+</body>
+</html>
